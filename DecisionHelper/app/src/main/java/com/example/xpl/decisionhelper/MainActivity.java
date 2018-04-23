@@ -17,7 +17,7 @@ import com.example.xpl.decisionhelper.tyrantgit.explosionfield.ExplosionField;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private ExplosionField explosionField;
-    private Button mainbt1;
+    private Button main_bt1;
     private TextView title_tv;
 
     private ObjectAnimator mainabt1_anim1;
@@ -34,21 +34,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainbt1 = (Button)findViewById(R.id.mainbutton1);
+        main_bt1 = (Button)findViewById(R.id.main_bt1);
         explosionField = ExplosionField.attach2Window(this);
         title_tv = (TextView)findViewById(R.id.title_tv);
 
-        mainbt1.setVisibility(View.VISIBLE);
-        //mainbt1起始跳动动画
+        main_bt1.setVisibility(View.VISIBLE);
+        //main_bt1起始跳动动画
         animatorSet1 = new AnimatorSet();
-        float buttonX = mainbt1.getTranslationX();
-        mainabt1_anim1 = ObjectAnimator.ofFloat(mainbt1, "translationY", buttonX, 60, buttonX);
+        float buttonX = main_bt1.getTranslationX();
+        mainabt1_anim1 = ObjectAnimator.ofFloat(main_bt1, "translationY", buttonX, 60, buttonX);
         mainabt1_anim1.setDuration(1500);
         mainabt1_anim1.setRepeatCount(Animation.INFINITE);
         mainabt1_anim1.setRepeatMode(Animation.REVERSE);
 
-        mainabt1_anim2 = ObjectAnimator.ofFloat(mainbt1, "scaleX", 0, 1f);
-        mainabt1_anim3 = ObjectAnimator.ofFloat(mainbt1, "scaleY", 0, 1f);
+        mainabt1_anim2 = ObjectAnimator.ofFloat(main_bt1, "scaleX", 0, 1f);
+        mainabt1_anim3 = ObjectAnimator.ofFloat(main_bt1, "scaleY", 0, 1f);
         mainabt1_anim2.setDuration(1500);
         mainabt1_anim3.setDuration(1500);
         animatorSet1.play(mainabt1_anim2).with(mainabt1_anim3).with(mainabt1_anim1);
@@ -63,14 +63,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         animatorSet2.play(title_tv_amim1).with(title_tv_amim2);
         animatorSet2.start();
 
-        mainbt1.setOnClickListener(this);
+        main_bt1.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.mainbutton1:
-                explosionField.explode(mainbt1);
+            case R.id.main_bt1:
+                explosionField.explode(main_bt1);
                 new Thread(){
                     @Override
                     public void run() {
