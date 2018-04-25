@@ -14,8 +14,8 @@ import android.view.WindowManager;
 
 public class SplashActivity extends AppCompatActivity {
 
-    //延迟1.5s
-    private int TIME_DISPLAY = 1500;
+    //延迟1s
+    private int TIME_DISPLAY = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

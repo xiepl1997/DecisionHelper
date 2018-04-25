@@ -36,13 +36,13 @@ public class ExplosionAnimator extends ValueAnimator {
     private static final float Y = Utils.dp2Px(20);
     private static final float V = Utils.dp2Px(2);
     private static final float W = Utils.dp2Px(1);
-    private Paint mPaint;
+    private Paint mpaint0;
     private Particle[] mParticles;
     private Rect mBound;
     private View mContainer;
 
     public ExplosionAnimator(View container, Bitmap bitmap, Rect bound) {
-        mPaint = new Paint();
+        mpaint0 = new Paint();
         mBound = new Rect(bound);
         int partLen = 15;
         mParticles = new Particle[partLen * partLen];
@@ -96,9 +96,9 @@ public class ExplosionAnimator extends ValueAnimator {
         for (Particle particle : mParticles) {
             particle.advance((float) getAnimatedValue());
             if (particle.alpha > 0f) {
-                mPaint.setColor(particle.color);
-                mPaint.setAlpha((int) (Color.alpha(particle.color) * particle.alpha));
-                canvas.drawCircle(particle.cx, particle.cy, particle.radius, mPaint);
+                mpaint0.setColor(particle.color);
+                mpaint0.setAlpha((int) (Color.alpha(particle.color) * particle.alpha));
+                canvas.drawCircle(particle.cx, particle.cy, particle.radius, mpaint0);
             }
         }
         mContainer.invalidate();

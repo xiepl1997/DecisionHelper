@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".DescActivity"></activity>
+        <activity android:name=".DescActivity" />
+        <activity android:name=".AdditemsActivity"></activity>
     </application>
 
 </manifest>
