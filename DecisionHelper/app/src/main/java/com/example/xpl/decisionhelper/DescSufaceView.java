@@ -97,7 +97,7 @@ public class DescSufaceView extends SurfaceView implements SurfaceHolder.Callbac
         try {
             canvas = sfh.lockCanvas();
             if(canvas!=null){
-                canvas.drawColor(Color.WHITE);
+                canvas.drawColor(Color.rgb(249, 249, 249));
                 startAngle = startAngle+velocity;
                 //扇形的角度
                 float angle = 360/parts;

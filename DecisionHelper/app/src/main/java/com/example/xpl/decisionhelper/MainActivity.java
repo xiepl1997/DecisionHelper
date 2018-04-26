@@ -159,6 +159,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.addname_bt:
                 explosionField.explode(addname_bt);
+                new Thread(){
+                    @Override
+                    public void run() {
+                        super.run();
+                        try {
+                            Thread.sleep(1000);
+                            Intent intent = new Intent(MainActivity.this, AdditemsActivity.class);
+                            MainActivity.this.startActivity(intent);
+                            /*
+                            结束掉主页面，在下一个页面按下返回键重启主页面，解决使用爆炸效果后
+                            返回主页面按键不显示的问题
+                            */
+                            MainActivity.this.finish();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.start();
                 break;
             case R.id.history_bt:
                 explosionField.explode(history_bt);
