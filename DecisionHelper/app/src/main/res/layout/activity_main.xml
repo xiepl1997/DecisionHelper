@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/title_tv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:text="Decision Helper"
         android:textAllCaps="false"
         android:textSize="45dp"
@@ -17,7 +17,7 @@
         android:textStyle="italic"
         android:textColor="@color/hotpink"
         android:background="@drawable/titleshape"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -78,7 +78,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="点击" />
+        android:text="转盘决定" />
 
 
 </android.support.constraint.ConstraintLayout>

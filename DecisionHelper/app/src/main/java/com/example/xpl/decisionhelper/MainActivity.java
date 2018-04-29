@@ -1,3 +1,9 @@
+/*
+function:主页面，主要实现了控件的展示，控件的动画，主页面的显示和按键的监听
+author：谢沛良
+create date：2018.4.21
+ */
+
 package com.example.xpl.decisionhelper;
 
 import android.animation.AnimatorSet;
@@ -13,6 +19,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.xpl.decisionhelper.tyrantgit.explosionfield.ExplosionField;
 
@@ -53,11 +60,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ObjectAnimator setting_bt_amim2;
     private AnimatorSet animatorSet6;
 
+    //选择要决定的事件的事件名，事件包含的选项
+    private String name;
+    private String data;
+
+    //是否选择好事件
+    boolean ready = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //初始化，开始动画
         ViewInit();
         ViewAnimotarStart();
 
@@ -67,6 +81,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         history_bt.setOnClickListener(this);
         hasnamed_bt.setOnClickListener(this);
         setting_bt.setOnClickListener(this);
+        //接收其他activity的数据
+        Intent intent = getIntent();
+        name = intent.getStringExtra("name"); // 事件名
+        data = intent.getStringExtra("data"); // 事件选项
+        main_bt1.setText(main_bt1.getText().toString()+":\n"+name);
     }
 
     //view初始化
@@ -137,25 +156,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.main_bt1:
-                explosionField.explode(main_bt1);
-                new Thread(){
-                    @Override
-                    public void run() {
-                        super.run();
-                        try {
-                            Thread.sleep(1000);
-                            Intent intent = new Intent(MainActivity.this, DescActivity.class);
-                            MainActivity.this.startActivity(intent);
-                            /*
-                            结束掉主页面，在下一个页面按下返回键重启主页面，解决使用爆炸效果后
-                            返回主页面按键不显示的问题
-                            */
-                            MainActivity.this.finish();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                if(name != null) {
+                    explosionField.explode(main_bt1);
+                    new Thread() {
+                        @Override
+                        public void run() {
+                            super.run();
+                            try {
+                                Thread.sleep(1000);
+                                Intent intent = new Intent(MainActivity.this, DescActivity.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("name", name);
+                                bundle.putString("data", data);
+                                intent.putExtras(bundle);
+                                MainActivity.this.startActivity(intent);
+                                /*
+                                结束掉主页面，在下一个页面按下返回键重启主页面，解决使用爆炸效果后
+                                返回主页面按键不显示的问题
+                                */
+                                MainActivity.this.finish();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
-                    }
-                }.start();
+                    }.start();
+                }
+                else{
+                    Toast.makeText(this, "您还没选择事件的呢^_^", Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.addname_bt:
                 explosionField.explode(addname_bt);

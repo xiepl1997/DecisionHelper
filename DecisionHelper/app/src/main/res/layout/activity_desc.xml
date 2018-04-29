@@ -5,26 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DescActivity">
-    <com.example.xpl.decisionhelper.DescSufaceView
+    <TextView
+        android:id="@+id/title2_tv"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="80dp"
+        android:layout_height="60dp"
+        android:text="转盘决定"
+        android:textAllCaps="false"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:textColor="@color/hotpink"
+        android:background="@drawable/titleshape"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         />
-    <Button
-        android:id="@+id/go_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GO!"
-        android:textSize="25dp"
+    <com.example.xpl.decisionhelper.DescSufaceView
+        android:id="@+id/myview"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@id/title2_tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+    <TextView
+        android:id="@+id/resule_tv"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:text="转盘决定"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:gravity="center"
         android:textStyle="italic"
-        android:background="@drawable/settingshape"
+        android:textColor="@color/hotpink"
+        android:background="@drawable/titleshape"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/myview"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="60dp"
         />
 
 </android.support.constraint.ConstraintLayout>

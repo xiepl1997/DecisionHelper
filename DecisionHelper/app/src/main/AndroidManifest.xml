@@ -24,6 +24,9 @@
         <activity android:name=".AdditemsActivity"
             android:windowSoftInputMode="adjustPan|stateHidden">
         </activity>
+        <receiver android:name=".DescActivity$myBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
     </application>
 
 </manifest>
