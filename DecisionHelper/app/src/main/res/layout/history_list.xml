@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/history_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black"
+        android:textSize="20dp"/>
+        <TextView
+            android:id="@+id/history_result_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17dp"
+            app:layout_constraintTop_toBottomOf="@+id/history_name_tv"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+        <TextView
+            android:id="@+id/history_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/orangered"
+            app:layout_constraintBottom_toBottomOf="@+id/history_result_tv"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+</android.support.constraint.ConstraintLayout>

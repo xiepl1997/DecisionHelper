@@ -117,7 +117,6 @@ public class AdditemsActivity extends AppCompatActivity implements View.OnClickL
                     values.put("data", data);
                     db.insert("Data", null, values);
                     values.clear();
-                    Toast.makeText(this, "数据存入成功！", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(AdditemsActivity.this, MainActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("name", addname_et.getText().toString());

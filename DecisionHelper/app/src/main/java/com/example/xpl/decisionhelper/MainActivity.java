@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.main_bt1:
                 if(name != null) {
                     explosionField.explode(main_bt1);
-                    new Thread() {
+                        new Thread() {
                         @Override
                         public void run() {
                             super.run();
@@ -208,6 +208,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.history_bt:
                 explosionField.explode(history_bt);
+                new Thread(){
+                    @Override
+                    public void run() {
+                        super.run();
+                        try {
+                            Thread.sleep(1000);
+                            Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+                            MainActivity.this.startActivity(intent);
+                            /*
+                            结束掉主页面，在下一个页面按下返回键重启主页面，解决使用爆炸效果后
+                            返回主页面按键不显示的问题
+                            */
+                            MainActivity.this.finish();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.start();
                 break;
             case R.id.hasnamed_bt:
                 explosionField.explode(hasnamed_bt);

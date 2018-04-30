@@ -19,9 +19,12 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.sqlite.SQLiteDatabase;
+import android.provider.ContactsContract;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +34,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class DescActivity extends AppCompatActivity {
 
@@ -41,9 +48,6 @@ public class DescActivity extends AppCompatActivity {
     public TextView title;
     public static TextView textView;
     private DescSufaceView descSufaceView;
-    private ObjectAnimator anim1;
-    private ObjectAnimator anim2;
-    private AnimatorSet animatorSet;
 
     private String str;
     private myThread thread;
@@ -63,6 +67,9 @@ public class DescActivity extends AppCompatActivity {
     private ObjectAnimator result_amim1;
     private ObjectAnimator result_amim2;
     private AnimatorSet animatorSet3;
+
+    private HistoryDatabaseHelper databaseHelper;
+    private SQLiteDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +81,9 @@ public class DescActivity extends AppCompatActivity {
         title  = (TextView)findViewById(R.id.title2_tv);
         descSufaceView = (DescSufaceView)findViewById(R.id.myview);
         textView.setText(resule);
+
+        databaseHelper = new HistoryDatabaseHelper(this, "History.db", null, 1);
+        db = databaseHelper.getWritableDatabase();
 
         //动画
         animatorSet1 = new AnimatorSet();
@@ -110,9 +120,10 @@ public class DescActivity extends AppCompatActivity {
 
     //线程加广播实现更新ui
     public class myThread extends Thread{
+        private boolean stop = false;
         @Override
         public void run() {
-            while(true){
+            while(!stop){
                 try {
                     sleep(30);
                     Log.i("run", "thread");
@@ -124,6 +135,9 @@ public class DescActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+        }
+        public void close(){
+            stop = true;
         }
     }
     public class LocalReceiver extends BroadcastReceiver{
@@ -137,21 +151,32 @@ public class DescActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
         Intent intent = new Intent(DescActivity.this, MainActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("name", name);
         bundle.putString("data", data);
         intent.putExtras(bundle);
         startActivity(intent);
-        thread.interrupt();
+        thread.close();
         localBroadcastManager.unregisterReceiver(localReceiver);
         this.finish();
     }
 
+    //在页面销毁时将本次选择的数据计入到历史数据库中
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        thread.interrupt();
         localBroadcastManager.unregisterReceiver(localReceiver);
+        //获取时间
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年mm月dd日 hh:mm:ss");
+        Date date = new Date(System.currentTimeMillis());
+        ContentValues values = new ContentValues();
+        values.put("name", name);
+        values.put("result", str);
+        values.put("time", simpleDateFormat.format(date));
+        db.insert("History", null, values);
+        values.clear();
+        Log.i("DescActivity", name);
     }
 }

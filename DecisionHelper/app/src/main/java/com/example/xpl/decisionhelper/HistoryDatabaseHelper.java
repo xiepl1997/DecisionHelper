@@ -1,7 +1,7 @@
 /*
 function:自定义SQLiteOpenHelper
-author:xiepeiliang
-create date:2018.4.28
+author:xpl
+create date:2018.4.30
  */
 
 package com.example.xpl.decisionhelper;
@@ -11,17 +11,20 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
-public class MyDatabaseHelper extends SQLiteOpenHelper{
-    public static String CREATE_DATA = "create table Data("
-            +"id integer primary key autoincrement,"
-            +"name text,"
-            +"data text)";
+public class HistoryDatabaseHelper extends SQLiteOpenHelper {
 
     private Context mcontext;
-    public MyDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public HistoryDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         mcontext = context;
     }
+
+    //历史页面数据包括事件名，结果，时间
+    public static String CREATE_DATA = "create table History("
+            +"id integer primary key autoincrement,"
+            +"name text,"
+            +"result text,"
+            +"time text)";
 
     @Override
     public void onCreate(SQLiteDatabase db) {

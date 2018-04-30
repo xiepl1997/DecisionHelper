@@ -214,6 +214,12 @@ public class DescSufaceView extends SurfaceView implements SurfaceHolder.Callbac
     public String getResule(){
         return resule;
     }
+    public float getVelocity(){
+        return velocity;
+    }
+    public int getFlag(){
+        return flag;
+    }
 
     //线程里绘制转盘
     @Override
