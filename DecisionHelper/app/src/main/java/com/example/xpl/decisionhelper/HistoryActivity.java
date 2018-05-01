@@ -133,9 +133,9 @@ public class HistoryActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         Intent intent = new Intent(HistoryActivity.this, MainActivity.class);
         startActivity(intent);
         this.finish();
+        super.onBackPressed();
     }
 }

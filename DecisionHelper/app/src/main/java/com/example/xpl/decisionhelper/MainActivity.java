@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }.start();
                 }
                 else{
-                    Toast.makeText(this, "您还没选择事件的呢^_^", Toast.LENGTH_LONG).show();
+                    MyToast.shows(this, "您还没选择事件的呢^_^");
                 }
                 break;
             case R.id.addname_bt:
@@ -233,6 +233,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.setting_bt:
                 explosionField.explode(setting_bt);
                 break;
+        }
+    }
+
+    private long times = 0;
+    @Override
+    public void onBackPressed() {
+        if(System.currentTimeMillis() - times > 2000){
+            MyToast.shows(this, "再按下返回键退出应用");
+            times = System.currentTimeMillis();
+        }
+        else{
+            super.onBackPressed();
+            System.exit(0);
+            finish();
         }
     }
 }

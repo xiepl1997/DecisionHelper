@@ -150,7 +150,6 @@ public class DescActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
 
         Intent intent = new Intent(DescActivity.this, MainActivity.class);
         Bundle bundle = new Bundle();
@@ -161,6 +160,7 @@ public class DescActivity extends AppCompatActivity {
         thread.close();
         localBroadcastManager.unregisterReceiver(localReceiver);
         this.finish();
+        super.onBackPressed();
     }
 
     //在页面销毁时将本次选择的数据计入到历史数据库中
@@ -169,7 +169,7 @@ public class DescActivity extends AppCompatActivity {
         super.onDestroy();
         localBroadcastManager.unregisterReceiver(localReceiver);
         //获取时间
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年mm月dd日 hh:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 hh:mm:ss");
         Date date = new Date(System.currentTimeMillis());
         ContentValues values = new ContentValues();
         values.put("name", name);

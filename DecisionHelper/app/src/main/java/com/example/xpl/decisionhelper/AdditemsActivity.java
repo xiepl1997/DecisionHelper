@@ -80,7 +80,7 @@ public class AdditemsActivity extends AppCompatActivity implements View.OnClickL
                     items_lv.setAdapter(arrayAdapter);
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "检查输入哦",Toast.LENGTH_LONG).show();
+                    MyToast.shows(getApplicationContext(), "检查输入哦");
                 }
             }
         });
@@ -125,10 +125,10 @@ public class AdditemsActivity extends AppCompatActivity implements View.OnClickL
                     startActivity(intent);
                 }
                 else if(addname_et.getText().toString().length() < 1) {
-                    Toast.makeText(this, "项目名字还没写呢^_^",Toast.LENGTH_LONG).show();
+                    MyToast.shows(getApplicationContext(), "项目名字还没写呢^_^");
                 }
                 else if(str.length<2) {
-                    Toast.makeText(this, "选项少于两个的呢^_^",Toast.LENGTH_LONG).show();
+                    MyToast.shows(getApplicationContext(), "选项少于两个的呢^_^");
                 }
                 break;
         }
@@ -136,9 +136,9 @@ public class AdditemsActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         Intent intent = new Intent(AdditemsActivity.this, MainActivity.class);
         startActivity(intent);
         this.finish();
+        super.onBackPressed();
     }
 }
