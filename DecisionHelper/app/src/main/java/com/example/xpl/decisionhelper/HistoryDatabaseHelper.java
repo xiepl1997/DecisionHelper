@@ -1,5 +1,5 @@
 /*
-function:自定义SQLiteOpenHelper
+function:自定义SQLiteOpenHelper,用于存储历史决策记录
 author:xpl
 create date:2018.4.30
  */

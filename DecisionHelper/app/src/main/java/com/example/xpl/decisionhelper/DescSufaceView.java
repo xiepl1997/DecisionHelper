@@ -122,7 +122,7 @@ public class DescSufaceView extends SurfaceView implements SurfaceHolder.Callbac
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         //获取选项，转变成字符串数组
-        data = new DescActivity().data.split("\\*");
+        data = new DescActivity().data.split(",");
         go = true;
         velocity = 0;
         startAngle = 0;

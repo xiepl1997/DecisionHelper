@@ -229,6 +229,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.hasnamed_bt:
                 explosionField.explode(hasnamed_bt);
+                new Thread(){
+                    @Override
+                    public void run() {
+                        super.run();
+                        try{
+                            Thread.sleep(1000);
+                            Intent intent = new Intent(MainActivity.this, HasnamedActivity.class);
+                            startActivity(intent);
+                            MainActivity.this.finish();
+
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.start();
                 break;
             case R.id.setting_bt:
                 explosionField.explode(setting_bt);
@@ -246,7 +261,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else{
             super.onBackPressed();
             System.exit(0);
-            finish();
+//            finish();
         }
     }
 }

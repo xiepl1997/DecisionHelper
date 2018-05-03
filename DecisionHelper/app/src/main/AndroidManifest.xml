@@ -22,8 +22,9 @@
         <activity android:name=".DescActivity" />
         <activity
             android:name=".AdditemsActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
-        <activity android:name=".HistoryActivity"></activity>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".HasnamedActivity"></activity>
     </application>
 
 </manifest>

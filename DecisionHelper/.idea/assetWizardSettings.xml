@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/home/xpl/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_settings_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/home/xpl/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_touch_app_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -33,9 +33,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_setting" />
+                                      <entry key="outputName" value="ic_hasnamedgoto" />
                                       <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="1b0a11" />
+                                      <entry key="themeColor" value="5472e5" />
                                     </map>
                                   </option>
                                 </PersistentState>

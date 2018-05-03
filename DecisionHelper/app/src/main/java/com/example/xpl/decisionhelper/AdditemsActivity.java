@@ -106,7 +106,7 @@ public class AdditemsActivity extends AppCompatActivity implements View.OnClickL
                 for (int i = 0; i < str.length; i++) {
                     data += str[i];
                     if (i != str.length - 1) {
-                        data += "*";
+                        data += ",";
                     }
                 }
                 if(addname_et.getText().toString().length()>=1 && str.length>=2) {
@@ -123,6 +123,7 @@ public class AdditemsActivity extends AppCompatActivity implements View.OnClickL
                     bundle.putString("data", data);
                     intent.putExtras(bundle);
                     startActivity(intent);
+                    this.finish();
                 }
                 else if(addname_et.getText().toString().length() < 1) {
                     MyToast.shows(getApplicationContext(), "项目名字还没写呢^_^");
@@ -136,9 +137,9 @@ public class AdditemsActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         Intent intent = new Intent(AdditemsActivity.this, MainActivity.class);
         startActivity(intent);
         this.finish();
-        super.onBackPressed();
     }
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HasnamedActivity">
+    <TextView
+        android:id="@+id/hasnamedtitle_tv"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="已编辑的事件"
+        android:textAllCaps="false"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:textColor="@color/hotpink"
+        android:background="@drawable/titleshape"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+    <ListView
+        android:id="@+id/hasnamed_lv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/hasnamedtitle_tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/titleshape"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+    </ListView>
+
+</android.support.constraint.ConstraintLayout>
